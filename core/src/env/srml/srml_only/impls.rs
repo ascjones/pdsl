@@ -118,6 +118,11 @@ where
         }
     }
 
+    /// Prints the contents of utf8 encoded `str_ptr` to the console.
+    fn println(msg: &str) {
+        unsafe { sys::ext_println(msg.as_ptr() as u32, msg.len() as u32) }
+    }
+
     /// Ends the current contract execution and returns the given bytes to the calling contract.
     unsafe fn r#return(data: &[u8]) -> ! {
         sys::ext_return(data.as_ptr() as u32, data.len() as u32);

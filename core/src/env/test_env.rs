@@ -242,6 +242,11 @@ impl TestEnvData {
         self.input.clone()
     }
 
+    /// Prints the contents of utf8 encoded `str_ptr` to the console.
+    pub fn println(&self, msg: &str) {
+        println!("{}", msg)
+    }
+
     /// Returns the data to the internal caller.
     ///
     /// # Note

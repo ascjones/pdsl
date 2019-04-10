@@ -34,7 +34,7 @@ pub trait EnvStorage {
     ///
     /// # Safety
     ///
-    /// This operation is unsafe becaues it does not check for key integrity.
+    /// This operation is unsafe because it does not check for key integrity.
     /// Users can compare this operation with a raw pointer dereferencing in Rust.
     unsafe fn store(key: Key, value: &[u8]);
 
@@ -42,7 +42,7 @@ pub trait EnvStorage {
     ///
     /// # Safety
     ///
-    /// This operation is unsafe becaues it does not check for key integrity.
+    /// This operation is unsafe because it does not check for key integrity.
     /// Users can compare this operation with a raw pointer dereferencing in Rust.
     unsafe fn clear(key: Key);
 
@@ -50,7 +50,7 @@ pub trait EnvStorage {
     ///
     /// # Safety
     ///
-    /// This operation is unsafe becaues it does not check for key integrity.
+    /// This operation is unsafe because it does not check for key integrity.
     /// Users can compare this operation with a raw pointer dereferencing in Rust.
     unsafe fn load(key: Key) -> Option<Vec<u8>>;
 }
@@ -62,6 +62,13 @@ pub trait Env: EnvTypes + EnvStorage {
 
     /// Loads input data for contract execution.
     fn input() -> Vec<u8>;
+
+    /// Prints the contents of utf8 encoded `str_ptr` to the console.
+    ///
+    /// # Note
+    ///
+    /// This must only be used in `--dev` chain environments!
+    fn println(msg: &str);
 
     /// Returns from the contract execution with the given value.
     ///
